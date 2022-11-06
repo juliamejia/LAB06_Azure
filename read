@@ -1,0 +1,76 @@
+# LAB06_Azure
+## Julia Mejia 
+
+1. crear tu cuenta en azure Microsoft con la suscripción de estudiantes
+2.	Dar click al icono de Shell cloud  
+<img width="413" alt="image" src="https://user-images.githubusercontent.com/98657146/200199177-f9d37f31-0c8e-4e36-ba94-b4df29aa7195.png">
+Esto llevara al terminal de azure  
+<img width="416" alt="image" src="https://user-images.githubusercontent.com/98657146/200199197-fba3ddea-5e6b-4f3c-9fd8-7b29252cc8c1.png">
+Ingresamos el siguiente comando para implementar un grupo de recursos 
+az group create --name MyResourceGroup --location westus  
+![image](https://user-images.githubusercontent.com/98657146/200199207-8a891598-3c49-4bf4-8ca3-209c1b19130e.png)
+Ahora para crear un plan de servicios de aplicaciones, usamos el siguiente comando 
+az appservice plan create --resource-group MyResourceGroup --name MyPlan --sku S1  
+![image](https://user-images.githubusercontent.com/98657146/200199222-efc6d8a8-92d4-4a4a-b7da-a53140d02cfb.png)
+
+3.	Crear la aplicación web con un nombre único 
+Para ello usamos el siguiente comando 
+az webapp create --resource-group MyResourceGroup --plan MyPlan --name MyJuliaApp  
+![image](https://user-images.githubusercontent.com/98657146/200199247-04898a77-4938-47dc-bad8-769b2a0c9f9e.png)
+
+4.	Finalmente creamos el servidor MySQL con un nombre de servidor único 
+Para ello usamos el siguiente comando 
+az mysql server create --resource-group MyResourceGroup --name juliasqlserver --admin-user juliabuser --admin-password P2ssw0rd@123 --sku-name GP_Gen5_2  
+![image](https://user-images.githubusercontent.com/98657146/200199275-6fd333d5-c3b1-4e7c-b5f4-2766e79567d4.png)
+![image](https://user-images.githubusercontent.com/98657146/200199282-53a20bfa-14b1-480e-abd7-74d32b33a4cb.png)
+
+5.	Navegar en la base de datos y seleccionar el servidor de la base de datos  
+<img width="415" alt="image" src="https://user-images.githubusercontent.com/98657146/200199294-a496498a-8ab3-4661-b2f0-3a22d44a5dd5.png">
+
+6.	Nos vamos a propiedades y guardamos el nombre de inicio de sesión del administrador y el nombre del servidor  
+<img width="416" alt="image" src="https://user-images.githubusercontent.com/98657146/200199308-969b3e65-4c54-42da-86a5-6c0c7b321533.png">
+
+
+7.	Nos vamos a seguridad de la conexión y permitimos el acceso a los servicios de Azure Alternar y Guardar los cambios  
+<img width="410" alt="image" src="https://user-images.githubusercontent.com/98657146/200199326-e465a606-043d-4061-a5fe-b11ec91ce985.png">
+![image](https://user-images.githubusercontent.com/98657146/200199336-fe89022b-dbda-4042-ada9-2bf98b10d44c.png)
+
+## EJERCICIO NUMERO 2 
+
+1.	Navegar hasta la aplicación web creada e implementar una aplicación de java, seleccionar configuración como se muestra en la imagen  
+<img width="414" alt="image" src="https://user-images.githubusercontent.com/98657146/200199360-7eedbcef-33e3-4ee5-ab75-8894458d4742.png">
+Posteriormente guardamos los cambios  
+![image](https://user-images.githubusercontent.com/98657146/200199383-55f6d26a-d4e4-4c0b-9a86-85a52d12c0b9.png)
+
+2.	Ahora seleccionamos introduccion y click en examinar  
+<img width="410" alt="image" src="https://user-images.githubusercontent.com/98657146/200199397-c3b55422-c416-4c44-bf14-2a4f74003df5.png">
+Nos despliega esta ventana  
+![image](https://user-images.githubusercontent.com/98657146/200199413-1456d739-aaf4-474d-9b41-55b9eec4f017.png)
+3.	Desde el portal de azure , seleccionar la aplicación web que creamos y en configuración de la aplicación dar click en cadenas de conexión / + nueva cadena de conexión  
+<img width="411" alt="image" src="https://user-images.githubusercontent.com/98657146/200199429-6db259ee-535f-4b60-ab1c-b0741fb9af28.png">
+
+
+4.	Agregamos una nueva cadena de conexión con nombre MyShuttleDb y en valor introducimos la siguiente cadena 
+jdbc:mysql://juliasqlserver.mysql.database.azure.com:3306/alm?useSSL=true&requireSSL=false&autoReconnect=true&user=juliabuser@juliasqlserver&password=P2ssw0rd@123  
+![image](https://user-images.githubusercontent.com/98657146/200199447-c3347d74-75c5-42ed-b668-b7769a04c92a.png)
+Damos aceptar  
+
+5.	Guardamos la conexión 
+<img width="413" alt="image" src="https://user-images.githubusercontent.com/98657146/200199494-38ed976d-7737-49f6-9d4a-099859a53ee7.png">
+
+## EJERCICIO 3
+Dentro de nuestro proyecto seleccionamos Pipelines/MyshuttleBuild/ editar  
+<img width="352" alt="image" src="https://user-images.githubusercontent.com/98657146/200199516-0a2b2d50-ce8f-444a-8874-0101b406826d.png">
+2. Hacer click en “Queue” para activar la compilación  
+<img width="410" alt="image" src="https://user-images.githubusercontent.com/98657146/200199531-bcec716f-5e15-4d56-a9b0-0f2ff404f12a.png">
+![image](https://user-images.githubusercontent.com/98657146/200199544-e0596dff-c749-4bcf-acc6-44a51ca9f0cc.png)
+3. esperar que se contruya correctamente  
+![image](https://user-images.githubusercontent.com/98657146/200199561-56616da4-c88f-46ec-b952-146b6cb10493.png)
+4. Seleccionar “ Releases” y dar clic en editar  
+<img width="416" alt="image" src="https://user-images.githubusercontent.com/98657146/200199568-91c66eab-5453-4a15-a47a-9315194e5177.png">
+
+  
+
+
+
+
